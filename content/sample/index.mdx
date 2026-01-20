@@ -1,43 +1,39 @@
-<Interstitials.Hero
-  headline="Use this Canopy IIIF template to create a new digital project"
-  description="This starter is yours to configure, add context to, and publish a collection that fits your project."
-  background="theme"
-  random={true}
-  links={[
-    {
-      href: "/about/get-started",
-      title: "Get Started",
-      type: "primary",
-    },
-    {
-      href: "https://canopy-iiif.github.io/app/docs/",
-      title: "Read documentation",
-      type: "secondary",
-    },
-  ]}
+<Image
+  src="https://iiif.dc.library.northwestern.edu/iiif/3/138a94b0-175a-4152-98c7-df58661ce7d5"
+  isTiledImage={true}
+  height="500px"
+  alt="Painting of the The town & pass of Boondi, in Rajpootana"
+  caption="The town & pass of Boondi, in Rajpootana - Situated on a southern slope of a hill at the end of a long range, the town of Boondi was the capital of the Rajput principality of that name. The palace of the Raja is a large masonry stone building about half way up the hill, according to Grindlay, with a kind of fortification extending to the top."
+  annotations={[
+        {
+          annotation: {
+            id: "https://iiif.dc.library.northwestern.edu/iiif/3/f7409acd-e3f9-496a-b733-81f46d4ffa4f/annotation/0",
+            type: "Annotation",
+            motivation: ["tagging"],
+            body: [
+              {
+                id: "https://iiif.dc.library.northwestern.edu/iiif/3/f7409acd-e3f9-496a-b733-81f46d4ffa4f/annotation/0/body/0",
+                type: "TextualBody",
+                value: "Five individuals traveling.",
+              },
+            ],
+            target: {
+              type: "SpecificResource",
+              source: {
+                id: "https://iiif.dc.library.northwestern.edu/iiif/3/f7409acd-e3f9-496a-b733-81f46d4ffa4f/canvas/1",
+                type: "Canvas",
+              },
+              selector: {
+                type: "FragmentSelector",
+                value: "xywh=1900,4050,1500,1000",
+              },
+            },
+          },
+          targetIndex: 0,
+        }
+      ]}
+
 />
-
-<Container>
-
-## Getting started
-
-Canopy IIIF is an open-source static site generator designed for IIIF collections. This template is ready for your collection, context, and publishing.
-
-### Point to your collection
-
-- Open `canopy.yml` and set `collection` to the IIIF Collection you want to feature.
-- Review `metadata` and `featured` entries—adjust them to suit the facets and works you want to highlight.
-
-### Tune layouts and pages
-
-- Customize `content/index.mdx`, `content/about/`, and add new folders under `content/` for exhibits or guides.
-- Modify `content/works/_layout.mdx` to control how individual manifests render.
-- Update `content/_app.mdx` to adjust site-wide structure.
-- Browse the component catalog and usage patterns in the docs to extend the narrative beyond default manifests.
-
-<RelatedItems top={3} />
-
-</Container>
 
 <Viewer iiifContent="https://api.dc.library.northwestern.edu/api/v2/works/0b2b8793-d4c7-4a55-8b53-61bfc54bc908?as=iiif" />
 
