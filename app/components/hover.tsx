@@ -1,5 +1,5 @@
 import React from "react";
-import "./hover-def.css";
+import "../styles/custom.css";
 
 export default function HoverDef({ term, definition }) {
   return (
