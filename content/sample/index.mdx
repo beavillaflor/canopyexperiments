@@ -11,34 +11,6 @@ export default function HoverDef({ term, definition }) {
   );
 }
 
-.hover-def {
-  position: relative;
-  cursor: help;
-  border-bottom: 1px dotted #888;
-}
-
-.hover-def__tooltip {
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111;
-  color: #fff;
-  padding: 6px 8px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
-  z-index: 10;
-}
-
-.hover-def:hover .hover-def__tooltip {
-  visibility: visible;
-  opacity: 1;
-}
-
 <Image
   src="https://iiif.dc.library.northwestern.edu/iiif/3/138a94b0-175a-4152-98c7-df58661ce7d5"
   isTiledImage={true}
