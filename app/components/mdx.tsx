@@ -4,7 +4,6 @@
  */
 
 // Map SSR-safe components to be rendered at build time and used in MDX files
-import '../styles/custom.css'
 
 export const components = {
   Example: './Example.tsx',
