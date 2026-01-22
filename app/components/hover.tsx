@@ -1,6 +1,4 @@
 import React from "react";
-import "../styles/custom.css";
-
 
 type HoverDefProps = {
   term: string;
