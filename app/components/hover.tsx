@@ -7,8 +7,7 @@ type HoverDefProps = {
   definition: string;
 };
 
-
-export default function HoverDef({ term, definition }) {
+export default function HoverDef({ term, definition }: HoverDefProps) {
   return (
     <span className="hover-def">
       {term}
