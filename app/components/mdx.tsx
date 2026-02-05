@@ -15,4 +15,5 @@ export const clientComponents = {
   ExampleClient: './Example.client.tsx',
   StoryMapJS: './StoryMapJS.client.tsx',
   HoverDef: './hover.client.tsx',
+  GlossaryText: './GlossaryText.client.tsx',
 };
