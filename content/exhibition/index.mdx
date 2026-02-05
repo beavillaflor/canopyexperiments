@@ -1,25 +1,28 @@
-#Priced Out
+import React from "react";
+import glossaryData from "@/data/glossaryData";
+import { renderWithGlossary } from "@/utils/renderWithGlossary";
 
-import { glossaryData } from "./glossaryData";
-import { renderWithGlossary } from "./renderWithGlossary";
-
-export default function Content() {
-  const text = `
-    NASA worked with the EPA and NOAA on the project.
+export default function HistoryPage() {
+  const content = `
+    NASA worked closely with the EPA and NOAA during this period.
+    The TVA played a key role in regional development.
   `;
 
   return (
-    <div>
-      <p>{renderWithGlossary(text, glossaryData)}</p>
+    <main>
+      <article>
+        <p>{renderWithGlossary(content, glossaryData)}</p>
+      </article>
 
-      <section id="glossary">
+      {/* Glossary section */}
+      <section className="glossary-section">
         <h2>Glossary</h2>
-        {Object.entries(glossaryData).map(([term, def]) => (
-          <div key={term} id={`glossary-${term}`}>
-            <strong>{term}</strong>: {def}
+        {Object.entries(glossaryData).map(([term, definition]) => (
+          <div key={term} id={`glossary-${term}`} className="glossary-item">
+            <strong>{term}</strong>: {definition}
           </div>
         ))}
       </section>
-    </div>
+    </main>
   );
 }
