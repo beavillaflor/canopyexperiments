@@ -1,5 +1,6 @@
 import React from "react";
 
+
 type HoverDefProps = {
   term: string;
   definition: string;
