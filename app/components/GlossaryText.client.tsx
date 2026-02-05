@@ -1,37 +1,38 @@
 import React from "react";
-import { HoverDef } from "./hover.client"; // make sure HoverDef is exported
+import HoverDef from "./hover.client";
 import { glossaryData } from "./glossaryData";
 
 type GlossaryTextProps = {
-  children: string;
+  children: React.ReactNode;
 };
 
 export function GlossaryText({ children }: GlossaryTextProps) {
-  const renderWithGlossary = (text: string) => {
-    const terms = Object.keys(glossaryData)
-      .sort((a, b) => b.length - a.length)
-      .map(term => ({
-        term,
-        regex: new RegExp(`\\b(${term})\\b`, "gi"),
-      }));
+  // Flatten children to plain text
+  const text = React.Children.toArray(children)
+    .map(child => (typeof child === "string" ? child : ""))
+    .join("");
 
-    let nodes: React.ReactNode[] = [text];
+  // Prepare terms sorted by length (longest first)
+  const terms = Object.keys(glossaryData).sort((a, b) => b.length - a.length);
 
-    terms.forEach(({ term, regex }) => {
-      nodes = nodes.flatMap(node => {
-        if (typeof node !== "string") return node;
-        return node.split(regex).map((part, i) =>
-          regex.test(part) ? (
-            <HoverDef key={`${term}-${i}`} term={part} definition={glossaryData[term]} />
-          ) : (
-            part
-          )
-        );
-      });
+  // Split the text into React nodes with HoverDef where matches occur
+  let nodes: React.ReactNode[] = [text];
+
+  terms.forEach(term => {
+    const regex = new RegExp(`\\b(${term})\\b`, "gi");
+
+    nodes = nodes.flatMap(node => {
+      if (typeof node !== "string") return node;
+
+      return node.split(regex).map((part, i) =>
+        regex.test(part) && glossaryData[term] ? (
+          <HoverDef key={`${term}-${i}`} term={part} definition={glossaryData[term]} />
+        ) : (
+          part
+        )
+      );
     });
+  });
 
-    return nodes;
-  };
-
-  return <>{renderWithGlossary(children)}</>;
+  return <>{nodes}</>;
 }
