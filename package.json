@@ -11,15 +11,15 @@
   "dependencies": {
     "@canopy-iiif/app": "^1.5.8",
     "@samvera/clover-iiif": "^3.3.2",
-    "swiper": "^11.2.10",
     "esbuild": "^0.21.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "swiper": "^11.2.10"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.13",
     "tailwindcss": "^4.1.13",
-    "tsx": "^4.19.1"
+    "tsx": "^4.21.0"
   },
   "author": "Mat Jordan <mat@northwestern.edu>",
   "homepage": "https://canopy-iiif.github.io/app/",
