@@ -1,1 +1,25 @@
 #Priced Out
+
+import { glossaryData } from "./glossaryData";
+import { renderWithGlossary } from "./renderWithGlossary";
+
+export default function Content() {
+  const text = `
+    NASA worked with the EPA and NOAA on the project.
+  `;
+
+  return (
+    <div>
+      <p>{renderWithGlossary(text, glossaryData)}</p>
+
+      <section id="glossary">
+        <h2>Glossary</h2>
+        {Object.entries(glossaryData).map(([term, def]) => (
+          <div key={term} id={`glossary-${term}`}>
+            <strong>{term}</strong>: {def}
+          </div>
+        ))}
+      </section>
+    </div>
+  );
+}
