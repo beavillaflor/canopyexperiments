@@ -7,15 +7,20 @@ type GlossaryTextProps = {
 };
 
 export function GlossaryText({ children }: GlossaryTextProps) {
-  // Flatten children to plain text
+  // Flatten children to a single string
   const text = React.Children.toArray(children)
-    .map(child => (typeof child === "string" ? child : ""))
-    .join("");
+    .map(child => {
+      if (typeof child === "string") return child;
+      if (React.isValidElement(child) && typeof child.props.children === "string") {
+        return child.props.children;
+      }
+      return "";
+    })
+    .join(" ");
 
-  // Prepare terms sorted by length (longest first)
+  // Sort glossary terms by length to avoid partial matches
   const terms = Object.keys(glossaryData).sort((a, b) => b.length - a.length);
 
-  // Split the text into React nodes with HoverDef where matches occur
   let nodes: React.ReactNode[] = [text];
 
   terms.forEach(term => {
