@@ -2,11 +2,10 @@ import React from "react";
 import HoverDef from "./hover.client";
 import { glossaryData } from "./glossaryData";
 
-type GlossaryTextProps = {
+type Props = {
   children: React.ReactNode;
 };
 
-// Recursively extract text from MDX / React nodes
 function extractText(node: React.ReactNode): string {
   if (typeof node === "string") return node;
   if (Array.isArray(node)) return node.map(extractText).join("");
@@ -14,11 +13,10 @@ function extractText(node: React.ReactNode): string {
   return "";
 }
 
-export function GlossaryText({ children }: GlossaryTextProps) {
+export default function GlossaryTextClient({ children }: Props) {
   const text = extractText(children);
 
   const terms = Object.keys(glossaryData).sort((a, b) => b.length - a.length);
-
   let nodes: React.ReactNode[] = [text];
 
   terms.forEach(term => {
