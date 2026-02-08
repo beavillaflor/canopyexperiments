@@ -6,19 +6,17 @@ type GlossaryTextProps = {
   children: React.ReactNode;
 };
 
-export function GlossaryText({ children }: GlossaryTextProps) {
-  // Flatten children to a single string
-  const text = React.Children.toArray(children)
-    .map(child => {
-      if (typeof child === "string") return child;
-      if (React.isValidElement(child) && typeof child.props.children === "string") {
-        return child.props.children;
-      }
-      return "";
-    })
-    .join(" ");
+// Recursively extract text from MDX / React nodes
+function extractText(node: React.ReactNode): string {
+  if (typeof node === "string") return node;
+  if (Array.isArray(node)) return node.map(extractText).join("");
+  if (React.isValidElement(node)) return extractText(node.props.children);
+  return "";
+}
 
-  // Sort glossary terms by length to avoid partial matches
+export function GlossaryText({ children }: GlossaryTextProps) {
+  const text = extractText(children);
+
   const terms = Object.keys(glossaryData).sort((a, b) => b.length - a.length);
 
   let nodes: React.ReactNode[] = [text];
@@ -30,8 +28,12 @@ export function GlossaryText({ children }: GlossaryTextProps) {
       if (typeof node !== "string") return node;
 
       return node.split(regex).map((part, i) =>
-        regex.test(part) && glossaryData[term] ? (
-          <HoverDef key={`${term}-${i}`} term={part} definition={glossaryData[term]} />
+        part.match(regex) ? (
+          <HoverDef
+            key={`${term}-${i}`}
+            term={part}
+            definition={glossaryData[term]}
+          />
         ) : (
           part
         )
