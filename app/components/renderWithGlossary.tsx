@@ -1,5 +1,5 @@
 import React from "react";
-import HoverDef from "./hover.client";
+import HoverDef from "./hover";
 
 export function renderWithGlossary(
   text: string,
