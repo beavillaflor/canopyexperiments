@@ -12,7 +12,7 @@
   }
 } */
 
-.hover-def {
+/*.hover-def {
   position: relative;
   border-bottom: 1px dotted #666;
   cursor: help;
@@ -34,4 +34,18 @@
 
 .hover-def:hover .hover-def__tooltip {
   opacity: 1;
+}*/
+
+.hover-def {
+  position: relative;
+  cursor: help;
+  background-color: rgba(255, 230, 150, 0.5);
+  padding: 0 0.15em;
+  border-radius: 0.2em;
+  transition: background-color 0.15s ease;
 }
+
+.hover-def:hover {
+  background-color: rgba(255, 215, 120, 0.85);
+}
+
