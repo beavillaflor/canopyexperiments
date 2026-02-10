@@ -10,6 +10,7 @@ export const components = {
   GlossaryText: './GlossaryText.tsx',
   HoverDef: './hover.tsx',
   GlossaryList: "./GlossaryList.tsx",
+  GlossaryPage: "./GlossaryPage.tsx",
 };
 
 // Map browser-only components to their source files; the builder bundles
