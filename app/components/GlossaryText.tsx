@@ -1,5 +1,5 @@
 import React from "react";
-import HoverDef from "./hover";
+import HoverDef from "./hover.client";
 import { glossaryData } from "./glossaryData";
 
 type Props = {

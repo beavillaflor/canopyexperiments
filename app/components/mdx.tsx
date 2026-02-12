@@ -7,9 +7,6 @@
 
 export const components = {
   Example: './Example.tsx',
-  GlossaryText: './GlossaryText.tsx',
-  HoverDef: './hover.tsx',
-  GlossaryList: "./GlossaryList.tsx",
 };
 
 // Map browser-only components to their source files; the builder bundles
@@ -18,4 +15,7 @@ export const clientComponents = {
   ExampleClient: './Example.client.tsx',
   StoryMapJS: './StoryMapJS.client.tsx',
   GlossaryPage: "./GlossaryPage.client.tsx",
+  GlossaryText: './GlossaryText.client.tsx',
+  HoverDef: './hover.client.tsx',
+  GlossaryList: "./GlossaryList.client.tsx",
 };

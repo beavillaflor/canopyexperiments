@@ -40,7 +40,7 @@ function escapeRegExp(str: string) {
 }*/
 
 import React from "react";
-import HoverDef from "./hover";
+import HoverDef from "./hover.client";
 
 export function renderWithGlossary(
   text: string,
