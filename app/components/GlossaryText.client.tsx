@@ -1,3 +1,5 @@
+//GlossaryText.client.tsx
+
 import React from "react";
 import HoverDef from "./hover.client";
 import { glossaryData } from "./glossaryData";
